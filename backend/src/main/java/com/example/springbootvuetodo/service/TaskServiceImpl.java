@@ -1,18 +1,26 @@
 package com.example.springbootvuetodo.service;
 
 import com.example.springbootvuetodo.domain.Task;
+import com.example.springbootvuetodo.repository.TaskRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService{
+    private final TaskRepository taskRepository;
+
+    // 추가
     @Override
     public Task addTask(Task task) {
-        return null;
+        return taskRepository.save(task);
     }
 
     @Override
     public Task getTask(Long id) {
-        return null;
+        return taskRepository.getTaskById(id);
     }
 
     @Override
@@ -22,31 +30,37 @@ public class TaskServiceImpl implements TaskService{
 
     @Override
     public void deleteTaskById(Long id) {
-
-    }
-
-    @Override
-    public void updateTaskComplete(Long id) {
-
+        taskRepository.deleteTaskById(id);
     }
 
     @Override
     public void updateAllTaskComplete(List<Task> tasks) {
-
+        tasks.stream().forEach(x -> taskRepository.updateTaskComplete(x.getId()));
     }
 
     @Override
     public List<Task> getAllTasks() {
-        return null;
+        return taskRepository.findAll();
     }
 
     @Override
     public List<Task> getTasksByTimeOut() {
-        return null;
+        return taskRepository.findAllByTimeOut();
+    }
+
+    //
+    @Override
+    public void updateAllEndTask() {
+        taskRepository.updateAllEndTask();
     }
 
     @Override
-    public void updateAllEndTask() {
+    public void deleteAllByList(List<Long> list) {
+        list.stream().forEach(t -> taskRepository.deleteTaskById(t.longValue()));
+    }
 
+    @Override
+    public void updateAlarmTask(List<Long> list) {
+        //list.stream().forEach(t -> taskRepository.updateAlaramById(t));
     }
 }

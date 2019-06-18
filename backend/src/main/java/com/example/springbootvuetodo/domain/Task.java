@@ -25,7 +25,7 @@ public class Task {
     private String title;
     private String content;
 
-    @Column
+    @Column(name="priority_order_type")
     @Enumerated(EnumType.STRING)
     private PriorityOrderType priorityOrderType;
 
@@ -37,11 +37,27 @@ public class Task {
     @Column(name="end_date")
     private Date endDate;
 
+    @Column(name="alarm_count")
+    private int alarmCount;
+
     @Column(length = 1)
     private Character complete;
+    @Column(name="time_out")
     private boolean timeOut;
 
     public Task(){
+        regDate = new Date();
+        endDate = new Date();
+        complete = 'N';
+        timeOut = false;
+        priorityOrderType = PriorityOrderType.Low;
+    }
+
+    public Task(Long id, String title, String content,PriorityOrderType priorityOrderType){
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.priorityOrderType = priorityOrderType;
         regDate = new Date();
         endDate = new Date();
         complete = 'N';
