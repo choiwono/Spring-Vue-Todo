@@ -51,6 +51,15 @@ public class TaskRepositoryTest {
     }
 
     @Test
+    @Transactional
+    public void TODO_제목_내용(){
+        Task task1 = taskRepository.getTaskById(1L);
+        taskRepository.updateTask(1L,"제목333","내용5555");
+        Task task2 = taskRepository.getTaskById(1L);
+        Assert.assertEquals(task1.getTitle(),task2.getTitle());
+    }
+
+    @Test
     public void TODO_LIST_모두_가져오기(){
         List<Task> tasks = taskRepository.findAll();
         tasks.stream().forEach(t -> System.out.println(t.getId()));

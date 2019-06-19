@@ -22,5 +22,5 @@ public interface TaskService {
     void updateAllEndTask();
     // 알람은 하루에 몇번 설정했는지 체크, 하루전일 경우 알람을 주자, 횟수는 설정에 따라서
     // 일단 하루전일 경우에 알람을 줄것!
-    void updateAlarmTask(List<Long> list);
+    //void updateAlarmTask(List<Long> list);
 }

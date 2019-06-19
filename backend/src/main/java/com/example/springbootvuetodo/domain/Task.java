@@ -50,6 +50,7 @@ public class Task {
         endDate = new Date();
         complete = 'N';
         timeOut = false;
+        alarmCount = 0;
         priorityOrderType = PriorityOrderType.Low;
     }
 

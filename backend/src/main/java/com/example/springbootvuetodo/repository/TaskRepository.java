@@ -32,4 +32,9 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
     @Transactional
     @Query(value = "UPDATE Task t SET t.timeOut=true WHERE t.endDate < CURRENT_TIMESTAMP AND t.complete='N'")
     void updateAllEndTask();
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Task t SET t.title=:title, t.content=:content WHERE t.id=:id")
+    void updateTask(@Param("id") Long id,@Param("title") String title,@Param("content") String content);
 }

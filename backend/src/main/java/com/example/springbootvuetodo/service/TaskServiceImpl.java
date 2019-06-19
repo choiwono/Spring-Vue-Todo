@@ -9,12 +9,11 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class TaskServiceImpl implements TaskService{
+public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
-
     // 추가
     @Override
-    public Task addTask(Task task) {
+    public Task addTask(Task task){
         return taskRepository.save(task);
     }
 
@@ -25,7 +24,7 @@ public class TaskServiceImpl implements TaskService{
 
     @Override
     public void updateTask(Task task) {
-
+        taskRepository.updateTask(task.getId(),task.getTitle(),task.getContent());
     }
 
     @Override
@@ -48,7 +47,6 @@ public class TaskServiceImpl implements TaskService{
         return taskRepository.findAllByTimeOut();
     }
 
-    //
     @Override
     public void updateAllEndTask() {
         taskRepository.updateAllEndTask();
@@ -59,8 +57,9 @@ public class TaskServiceImpl implements TaskService{
         list.stream().forEach(t -> taskRepository.deleteTaskById(t.longValue()));
     }
 
-    @Override
+    // 알람처리
+    /*@Override
     public void updateAlarmTask(List<Long> list) {
         //list.stream().forEach(t -> taskRepository.updateAlaramById(t));
-    }
+    }*/
 }
