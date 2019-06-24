@@ -30,15 +30,12 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  #margin-top: 60px;
 }
 .main-view {
   min-height: calc(100vh - 100px);
 }
-.modify-button {
-  height:48px;
-  max-width:100px;
-}
+
 a {
   overflow:hidden;
   word-break:break-all;

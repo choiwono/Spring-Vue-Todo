@@ -20,20 +20,17 @@ Vue.component('icon',icon);
 Vue.use(Vuetify);
 Vue.config.productionTip = false
 Vue.use(BootstrapVue);
-Vue.use(VueAxios);
+Vue.use(VueAxios, axios);
 axios.defaults.baseURL = "/api";
-//axios.defaults.baseURL = "http://localhost:8080/api";
 Vue.router = router;
 Vue.use(Notifications);
-//Vue.prototype.$axios = axios;
-//Vue.prototype.$EventBus = new Vue();
 
 axios.interceptors.response.use(response => {
   return response.data;
 }, error => {
   if (error.response && error.response.data) {
     let errCode = error.response.status;
-    if(errCode === 401){
+    /*if(errCode === 401){
       Vue.notify({
         group:'notify',
         title:'실패했습니다',
@@ -41,7 +38,8 @@ axios.interceptors.response.use(response => {
         type:'error'
       });
       router.push({name:'login'})
-    } else if(errCode === 404 || errCode === 405 || errCode === 500){
+    } else */
+    if(errCode === 404 || errCode === 405 || errCode === 500){
       switch (errCode){
         case 404 :
         case 405 : Vue.notify({
