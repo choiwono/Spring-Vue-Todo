@@ -6,19 +6,22 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state : {
-    categories: [],
+    tasks: [],
   },
   plugins: [createPersistedState()],
   getters: {
-    getCategories: (state) => {
-      return state.categories;
+    getTasks: (state) => {
+      return state.tasks;
     }
   },
 
   mutations: {
-    changeCategories: (state,payload) => {
-
-    }
+    changeTasks: (state,payload) => {
+      return state.tasks = payload.arr;
+    },
+    addTask: (state,payload) => {
+      state.tasks.push(payload.data);
+    },
   },
   actions: {
 

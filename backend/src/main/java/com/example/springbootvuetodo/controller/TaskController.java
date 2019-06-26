@@ -29,7 +29,7 @@ public class TaskController {
     private final TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<ResponseDto> addTask(@Valid TaskDto taskDto, BindingResult bindingResult){
+    public ResponseEntity<Task> addTask(@Valid TaskDto taskDto, BindingResult bindingResult){
         ResponseDto responseDto = new ResponseDto();
         ParseStringToDate parseStringToDate = new ParseStringToDate();
         if(bindingResult.hasErrors())
@@ -47,10 +47,11 @@ public class TaskController {
         if(Optional.ofNullable(priorityType).isPresent())
             task.setPriorityOrderType(priorityType);
 
-        if(Optional.ofNullable(taskService.addTask(task)).isPresent())
+        Task createdTask = taskService.addTask(task);
+        if(Optional.ofNullable(createdTask).isPresent())
             responseDto.setMessage("OK! created");
 
-        return new ResponseEntity<ResponseDto>(responseDto,HttpStatus.CREATED);
+        return new ResponseEntity<Task>(createdTask,HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/{id}")
