@@ -22,6 +22,9 @@ export const store = new Vuex.Store({
     addTask: (state,payload) => {
       state.tasks.push(payload.data);
     },
+    deleteTask: (state,payload) => {
+
+    }
   },
   actions: {
 

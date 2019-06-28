@@ -33,7 +33,7 @@ html, body {
   #margin-top: 60px;
 }
 .main-view {
-  min-height: calc(100vh - 100px);
+  padding-bottom:56px;
 }
 
 a {

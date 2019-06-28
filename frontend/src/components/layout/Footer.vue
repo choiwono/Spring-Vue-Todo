@@ -1,22 +1,5 @@
 <template>
   <div>
-  <!--<v-bottom-nav class="bottom-nav"
-    :value="true"
-    absolute
-    fixed
-    app
-    height="75"
-  >
-    <v-btn
-      color="teal"
-      flat
-      value="nearby"
-      v-b-modal.add-modal
-    >
-      &lt;!&ndash;<span>할일 추가하기</span>&ndash;&gt;
-      <icon name="plus"></icon>
-    </v-btn>
-  </v-bottom-nav>-->
     <v-bottom-nav
     :value="true"
     fixed
@@ -73,6 +56,12 @@
             this.$store.commit('addTask', {
               data: result
             });
+          })
+          this.$nextTick(() =>{
+            this.title = '';
+            this.content = '';
+            this.endDate = '';
+            this.selected = '';
           })
         }
       }

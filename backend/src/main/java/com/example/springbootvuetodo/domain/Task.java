@@ -29,11 +29,11 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private PriorityOrderType priorityOrderType;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss",timezone = "Asia/Seoul")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/Seoul")
     @Column(name="reg_date")
     private Date regDate;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss",timezone = "Asia/Seoul")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/Seoul")
     @Column(name="end_date")
     private Date endDate;
 

@@ -15,10 +15,10 @@ import 'vuetify/dist/vuetify.min.css'
 import Vuetify from 'vuetify'
 import Notifications from 'vue-notification'
 import { store } from './store/store'
-import { Datetime } from 'vue-datetime';
+import vueMoment from 'vue-moment'
 
-Vue.component('datetime', Datetime);
 Vue.component('icon',icon);
+Vue.use(vueMoment);
 Vue.use(Vuetify);
 Vue.config.productionTip = false
 Vue.use(BootstrapVue);
