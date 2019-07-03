@@ -24,6 +24,16 @@ export const store = new Vuex.Store({
     },
     deleteTask: (state,payload) => {
 
+    },
+    updateTask: (state,payload) => {
+      let tasks = state.tasks;
+      for(let i=0; i<tasks.length; i++){
+        if(tasks[i].id === payload.id){
+          tasks[i].title = payload.title;
+          tasks[i].endDate = payload.endDate;
+          tasks[i].priorityOrderType = payload.priorityOrderType;
+        }
+      }
     }
   },
   actions: {

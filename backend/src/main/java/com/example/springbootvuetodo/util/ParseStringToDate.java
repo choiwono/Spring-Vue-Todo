@@ -10,7 +10,7 @@ import java.util.*;
 public class ParseStringToDate {
     public Date stringToParse(String dateStr){
         Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             date = dateFormat.parse(dateStr);
             return date;

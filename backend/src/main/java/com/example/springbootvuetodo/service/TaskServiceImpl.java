@@ -3,6 +3,7 @@ package com.example.springbootvuetodo.service;
 import com.example.springbootvuetodo.domain.Task;
 import com.example.springbootvuetodo.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void updateTask(Task task) {
-        taskRepository.updateTask(task.getId(),task.getTitle(),task.getContent());
+    public void updateTask(Task task){
+        taskRepository.save(task);
     }
 
     @Override
@@ -39,7 +40,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+        Sort sort = new Sort(Sort.Direction.DESC, "endDate","priorityOrderType");
+        return taskRepository.findAll(sort);
     }
 
     @Override

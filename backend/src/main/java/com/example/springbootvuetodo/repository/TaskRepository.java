@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -33,8 +33,11 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
     @Query(value = "UPDATE Task t SET t.timeOut=true WHERE t.endDate < CURRENT_TIMESTAMP AND t.complete='N'")
     void updateAllEndTask();
 
-    @Modifying
+    /*@Modifying
     @Transactional
-    @Query(value = "UPDATE Task t SET t.title=:title, t.content=:content WHERE t.id=:id")
-    void updateTask(@Param("id") Long id,@Param("title") String title,@Param("content") String content);
+    @Query(value = "UPDATE Task t SET t.title=:title, t.content=:content, t.endDate=:endDate" +
+            ",t.priorityOrderType=:priorityType WHERE t.id=:id")
+    void updateTask(@Param("id") Long id,@Param("title") String title,
+                    @Param("content") String content,@Param("endDate") Date endDate,
+                    @Param("priorityOrderType") String priorityType);*/
 }

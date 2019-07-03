@@ -70,7 +70,6 @@ public class TaskController {
                                                   @PathVariable(value="id") Long id){
         ResponseDto responseDto = new ResponseDto();
         ConverToEntity converToEntity = new ConverToEntity();
-        taskDto.setId(id);
         taskService.updateTask(converToEntity.converToEntity(taskDto));
         responseDto.setMessage("OK, updated");
         return new ResponseEntity<ResponseDto>(responseDto,HttpStatus.OK);

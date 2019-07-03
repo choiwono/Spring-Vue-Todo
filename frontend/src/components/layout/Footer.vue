@@ -53,10 +53,11 @@
           data.append('priorityOrderType',this.selected);
 
           this.$http.post('/tasks/',data).then((result) =>{
+            this.$notify({ group:'notify', title:'TODO가 추가되었습니다', text:'성공했습니다', type:'success'});
             this.$store.commit('addTask', {
               data: result
             });
-          })
+          }),
           this.$nextTick(() =>{
             this.title = '';
             this.content = '';
