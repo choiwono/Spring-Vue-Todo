@@ -28,7 +28,7 @@
               </v-card-text>
             </v-card-actions>
           </v-card>
-          <b-modal :ref="'modify-modal'+item.id" title="todo 수정" @ok="handleOk" ok-only centered>
+          <b-modal :ref="'modify-modal'+item.id" title="Todo 수정" @ok="handleOk" ok-only centered>
             <form @submit.stop.prevent="handleSubmit">
               <input :value="id" name ="id" type="hidden" />
               <b-form-input class="mb-3" v-model="endDate" type="date"></b-form-input>
@@ -163,5 +163,8 @@
   }
   .title {
     font-size:1.2em !important;
+  }
+  .modal-open {
+    padding-right:0px !important;
   }
 </style>
